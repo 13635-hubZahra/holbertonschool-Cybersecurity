@@ -1,2 +1,2 @@
 #!/bin/bash
-mask=$(( 0xFFFFFFFF << (32 - $1) )); printf "%d.%d.%d.%d\n" $(( (mask >> 24) & 0xFF )) $(( (mask >> 16) & 0xFF )) $(( (mask >> 8) & 0xFF )) $(( mask & 0xFF ))
+bin=$(printf '%.0s1' $(seq 1 $1); printf '%.0s0' $(seq 1 $((32 - $1)))); for i in {0..24..8}; do printf "%d${i:+?}" "$((2#${bin:i:8}))"; done | tr '?' '.' && echo
