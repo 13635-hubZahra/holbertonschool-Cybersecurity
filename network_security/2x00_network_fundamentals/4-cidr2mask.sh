@@ -1,2 +1,2 @@
 #!/bin/bash
-mask=$((0xFFFFFFFF << (32 - $1))); printf "%d.%d.%d.%d\n" $((mask >> 24 & 255)) $((mask >> 16 & 255)) $((mask >> 8 & 255)) $((mask & 255))
+m=$((0xffffffff << (32 - $1))); res=$(printf "%d.%d.%d.%d" $((m >> 24 & 255)) $((m >> 16 & 255)) $((m >> 8 & 255)) $((m & 255))); echo "$res"
